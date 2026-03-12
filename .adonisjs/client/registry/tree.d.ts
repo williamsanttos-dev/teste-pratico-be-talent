@@ -3,9 +3,14 @@ import type { routes } from './index.ts'
 
 export interface ApiDefinition {
   auth: {
-    auth: {
-      signup: typeof routes['auth.auth.signup']
-      login: typeof routes['auth.auth.login']
-    }
+    signup: typeof routes['auth.signup']
+    login: typeof routes['auth.login']
+  }
+  products: {
+    store: typeof routes['products.store']
+    index: typeof routes['products.index']
+    show: typeof routes['products.show']
+    update: typeof routes['products.update']
+    destroy: typeof routes['products.destroy']
   }
 }
