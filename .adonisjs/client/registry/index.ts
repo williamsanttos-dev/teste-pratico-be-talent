@@ -6,17 +6,47 @@ import type { ApiDefinition } from './tree.d.ts'
 const placeholder: any = {}
 
 const routes = {
-  'auth.auth.signup': {
+  'auth.signup': {
     methods: ["POST"],
     pattern: '/api/v1/auth/signup',
     tokens: [{"old":"/api/v1/auth/signup","type":0,"val":"api","end":""},{"old":"/api/v1/auth/signup","type":0,"val":"v1","end":""},{"old":"/api/v1/auth/signup","type":0,"val":"auth","end":""},{"old":"/api/v1/auth/signup","type":0,"val":"signup","end":""}],
-    types: placeholder as Registry['auth.auth.signup']['types'],
+    types: placeholder as Registry['auth.signup']['types'],
   },
-  'auth.auth.login': {
+  'auth.login': {
     methods: ["POST"],
     pattern: '/api/v1/auth/login',
     tokens: [{"old":"/api/v1/auth/login","type":0,"val":"api","end":""},{"old":"/api/v1/auth/login","type":0,"val":"v1","end":""},{"old":"/api/v1/auth/login","type":0,"val":"auth","end":""},{"old":"/api/v1/auth/login","type":0,"val":"login","end":""}],
-    types: placeholder as Registry['auth.auth.login']['types'],
+    types: placeholder as Registry['auth.login']['types'],
+  },
+  'products.store': {
+    methods: ["POST"],
+    pattern: '/api/v1/products',
+    tokens: [{"old":"/api/v1/products","type":0,"val":"api","end":""},{"old":"/api/v1/products","type":0,"val":"v1","end":""},{"old":"/api/v1/products","type":0,"val":"products","end":""}],
+    types: placeholder as Registry['products.store']['types'],
+  },
+  'products.index': {
+    methods: ["GET","HEAD"],
+    pattern: '/api/v1/products',
+    tokens: [{"old":"/api/v1/products","type":0,"val":"api","end":""},{"old":"/api/v1/products","type":0,"val":"v1","end":""},{"old":"/api/v1/products","type":0,"val":"products","end":""}],
+    types: placeholder as Registry['products.index']['types'],
+  },
+  'products.show': {
+    methods: ["GET","HEAD"],
+    pattern: '/api/v1/products/:id',
+    tokens: [{"old":"/api/v1/products/:id","type":0,"val":"api","end":""},{"old":"/api/v1/products/:id","type":0,"val":"v1","end":""},{"old":"/api/v1/products/:id","type":0,"val":"products","end":""},{"old":"/api/v1/products/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['products.show']['types'],
+  },
+  'products.update': {
+    methods: ["PATCH"],
+    pattern: '/api/v1/products/:id',
+    tokens: [{"old":"/api/v1/products/:id","type":0,"val":"api","end":""},{"old":"/api/v1/products/:id","type":0,"val":"v1","end":""},{"old":"/api/v1/products/:id","type":0,"val":"products","end":""},{"old":"/api/v1/products/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['products.update']['types'],
+  },
+  'products.destroy': {
+    methods: ["DELETE"],
+    pattern: '/api/v1/products/:id',
+    tokens: [{"old":"/api/v1/products/:id","type":0,"val":"api","end":""},{"old":"/api/v1/products/:id","type":0,"val":"v1","end":""},{"old":"/api/v1/products/:id","type":0,"val":"products","end":""},{"old":"/api/v1/products/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['products.destroy']['types'],
   },
 } as const satisfies Record<string, AdonisEndpoint>
 
