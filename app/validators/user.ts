@@ -18,3 +18,4 @@ export const loginValidator = vine.create({
   email: email(),
   password: vine.string(),
 })
+export type LoginData = Infer<typeof loginValidator>
