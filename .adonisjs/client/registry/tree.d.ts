@@ -14,4 +14,8 @@ export interface ApiDefinition {
     destroy: typeof routes['products.destroy']
   }
   purchases: typeof routes['purchases']
+  clients: {
+    index: typeof routes['clients.index']
+    show: typeof routes['clients.show']
+  }
 }
