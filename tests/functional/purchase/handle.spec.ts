@@ -28,6 +28,7 @@ test.group('Purchases | handle', (group) => {
         { productId: product2.id, quantity: 1 },
       ],
       cardNumber: '1234567812345678',
+      cvv: '765',
     }
 
     const response = await client.post('/api/v1/purchases').json(payload)
@@ -59,6 +60,7 @@ test.group('Purchases | handle', (group) => {
       },
       products: [{ productId: 9999, quantity: 1 }],
       cardNumber: '1234567812345678',
+      cvv: '765',
     }
 
     const response = await client.post('/api/v1/purchases').json(payload)

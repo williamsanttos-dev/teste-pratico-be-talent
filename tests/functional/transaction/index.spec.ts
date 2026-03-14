@@ -7,6 +7,8 @@ import User from '#models/user'
 import env from '#start/env'
 import { UserRole } from '../../../app/enums/user_role.ts'
 import { TransactionStatus } from '../../../app/enums/transaction_status.ts'
+import Client from '#models/client'
+import Gateway from '#models/gateway'
 
 test.group('Transactions | index', (group) => {
   group.each.setup(async () => {
@@ -31,21 +33,30 @@ test.group('Transactions | index', (group) => {
 
     const token = generateToken(admin.id, UserRole.ADMIN)
 
+    const clientId = await Client.create({
+      name: 'johnDoe',
+      email: 'johnDoe567@gmail.com',
+    })
+    const gatewayId = await Gateway.create({
+      name: 'gateway-test-001',
+      priority: 1,
+    })
+
     await Transaction.create({
-      clientId: 1,
-      gatewayId: 100,
+      clientId: clientId.id,
+      gatewayId: gatewayId.id,
       amount: 5000,
       externalId: 'ext_1',
-      status: TransactionStatus.PENDING,
+      status: TransactionStatus.APPROVED,
       cardLastNumbers: '1234',
     })
 
     await Transaction.create({
-      clientId: 1,
-      gatewayId: 200,
+      clientId: clientId.id,
+      gatewayId: gatewayId.id,
       amount: 8000,
       externalId: 'ext_2',
-      status: TransactionStatus.PENDING,
+      status: TransactionStatus.REFUNDED,
       cardLastNumbers: '4321',
     })
 

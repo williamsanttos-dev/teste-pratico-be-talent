@@ -30,6 +30,7 @@ test.group('PurchaseService | handle', (group) => {
         { productId: product2.id, quantity: 1 },
       ],
       cardNumber: '1234567812345678',
+      cvv: '321',
     }
 
     const result = await PurchaseService.handle(payload)
@@ -58,6 +59,7 @@ test.group('PurchaseService | handle', (group) => {
       },
       products: [{ productId: 9999, quantity: 1 }],
       cardNumber: '1234567812345678',
+      cvv: '432',
     }
 
     await assert.rejects(() => PurchaseService.handle(payload), 'One or more products not found')
@@ -81,6 +83,7 @@ test.group('PurchaseService | handle', (group) => {
       },
       products: [{ productId: product.id, quantity: 1 }],
       cardNumber: '1234567812345678',
+      cvv: '543',
     }
 
     await PurchaseService.handle(payload)
@@ -103,6 +106,7 @@ test.group('PurchaseService | handle', (group) => {
       },
       products: [{ productId: product.id, quantity: 3 }],
       cardNumber: '1234567812345678',
+      cvv: '321',
     }
 
     const result = await PurchaseService.handle(payload)
